@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template2.xhtml">
+
+    <ui:define name="subheader">
+        Page Header
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="Card" style="padding: 5px;">
+            <div class="CardTopic" style="margin-left: 10px">Gestión</div>
+
+            <div class="Container50 Responsive50" style="padding: 2;margin: 0">
+
+
+                <p:tabView >
+                    <p:tab title="Cartera">
+                        <p:inputText placeholder="Buscar..." style="width: 95%;margin: 0"/>
+                        <div class="Separator" style="padding: 0;"></div>
+                        <p:dataGrid styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;"
+                                    value="#{clienteBean.findAll()}" var="c" columns="1">
+                            <p:outputPanel>
+
+                                <div><i class="fa fa-user Fs22 Blue"></i> <span class="FontVoltBold Fs12">#{c.primerNombre} #{c.primerApellido}</span></div>
+                                <div class="Separator" style="padding: 0;"></div>
+                            </p:outputPanel>
+
+                        </p:dataGrid>
+
+                    </p:tab>
+                    <p:tab title="Tareas Programadas">
+                        <h:outputText value="Tareas Programas"/>
+                    </p:tab>
+                </p:tabView>
+
+
+            </div>
+
+
+
+            <div class="Container50 Responsive50" style="padding: 2;margin: 0;">
+
+                <p:tabView>
+                    <p:tab title="Infomación">
+                        <p:outputPanel>
+                            <div><i class="fa fa-info-circle Fs22 Blue"></i> <span class="FontVoltRegular Fs14">Datos Personales</span></div>
+                            <div class="Separator"></div>
+                            <p:panelGrid  columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"  styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                                <h:outputText styleClass="FontVoltBold Fs12" value="Nombre:"/>
+                                <h:outputText styleClass="FontVoltRegular Fs12" value="CHRISTIAN"/>
+                                <h:outputText styleClass="FontVoltBold Fs12" value="Apellido:"/>
+                                <h:outputText styleClass="FontVoltRegular Fs12" value="ROMERO"/>
+                                <h:outputText styleClass="FontVoltBold Fs12" value="RUC:"/>
+                                <h:outputText styleClass="FontVoltRegular Fs12" value="3404671-2"/>
+
+
+                            </p:panelGrid>
+
+
+                            <div class="Separator" style="padding: 0;"></div>
+                            <p:outputPanel>
+
+                                <div><i class="fa fa-phone Fs22 Blue"></i> <span class="FontVoltBold Fs12">0984497044</span></div>
+                                <div class="Separator" style="padding: 0;"></div>
+                            </p:outputPanel>
+                            <p:outputPanel>
+
+                                <div><i class="fa fa-phone Fs22 Blue"></i> <span class="FontVoltBold Fs12">0984497044</span></div>
+                                <div class="Separator" style="padding: 0;"></div>
+                            </p:outputPanel>
+
+                            <p:outputPanel>
+
+                                <div><i class="fa fa-phone Fs22 Blue"></i> <span class="FontVoltBold Fs12">0984497044</span></div>
+                                <div class="Separator" style="padding: 0;"></div>
+                            </p:outputPanel>
+                        </p:outputPanel>
+                    </p:tab>
+                    <p:tab title="Deuda">
+                        <h:outputText value="Deuda"/>
+                    </p:tab>
+
+                    <p:tab title="Historial">
+                        <h:outputText value="Historial"/>
+                    </p:tab>
+
+                </p:tabView>
+
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>

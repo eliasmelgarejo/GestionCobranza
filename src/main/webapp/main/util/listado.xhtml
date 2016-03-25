@@ -1,0 +1,53 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pv="http://primefaces.org/volt">
+
+
+    <p:dataGrid value="#{bean.filterOptions}" var="f" columns="2">
+        <p:outputPanel>
+            <p:panelGrid columns="2" rendered="#{f.tipo == 'java.lang.String'}">
+                <h:outputText value="#{f.descripcion}"/>
+                <h:inputText value="#{f.valorString}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="2" rendered="#{f.tipo == 'java.lang.Integer'}">
+                <h:outputText value="#{f.descripcion}"/>
+                <h:inputText value="#{f.valorInteger}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="2" rendered="#{f.tipo == 'java.lang.Long'}">
+                <h:outputText value="#{f.descripcion}"/>
+                <h:inputText value="#{f.valorLong}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="2" rendered="#{f.tipo == 'java.lang.Double'}">
+                <h:outputText value="#{f.descripcion}"/>
+                <h:inputText value="#{f.valorDouble}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="2" rendered="#{f.tipo == 'java.math.BigDecimal'}">
+                <h:outputText value="#{f.descripcion}"/>
+                <h:inputText value="#{f.valorBigDecimal}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="2" rendered="#{f.tipo == 'java.util.Date'}">
+                <h:outputText value="#{f.descripcion} desde"/>
+                <p:calendar value="#{f.valorDateInicio}"/>
+                <h:outputText value="#{f.descripcion} hasta"/>
+                <p:calendar value="#{f.valorDateFin}"/>
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dataGrid>
+
+
+    <p:commandButton value="Buscar" action="#{bean.buscar()}" update="tabla"/>
+    <p:dataTable id="tabla" var="o" value="#{bean.lista}">                    
+        <p:columns value="#{bean.filterOptions}" var="column" sortBy="#{o[column.campo]}">
+            <f:facet name="header">
+                <h:outputText value="#{column.descripcion}" />
+            </f:facet>
+            <h:outputText value="#{o[column.campo]}" />
+        </p:columns>
+    </p:dataTable>
+
+
+</ui:composition>
